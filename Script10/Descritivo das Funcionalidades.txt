@@ -1,0 +1,24 @@
+Yuri Siqueira Dantas 119110765 - Descritivo das funcionalidades
+
+	Para realização da sprint 10 tive que alterar algumas Definições de GPID, pois iria utilizar as portas C6 e C3,
+ além disso tive que adicionar um PCMSK1 para lidar com essas portas C.
+	
+Funcionalidade 1: Troca de tela 
+	Para realizar a troca de tela sem precisar utilizar uma das portas disponíveis no atmega328,
+optei por fazer um circuito (utilizando diodos) para que fosse possível utilizar a interrupção da porta D usadas no 
+diâmetro da roda, conseguindo realizar duas interrupções simultâneas(D4 e D5) e criando um if especifico para esse caso
+assim trocando as telas na main.
+
+Funcionalidade 2: Kilometragem de Percurso
+	Para a kilometragem de percurso, eu criei uma variavel e coloquei pra receber a equação previamente discutida em aula
+para a contagem dos kilometros (Diametro_pneu_cm*3.1415)/100000), além disso salvei o seu resultado utilizando eeprom_write_byte
+e criei um circuito utilizando a porta C6, dessa forma, quando houvesse interrupção na porta C6 essa variável seria zerada.
+
+Funcionalidade 3: Farol 
+	Para o Farol, eu crie uma variável que teria seu valor alterado (de 0 a 4) sempre que houvesse interrupção na porta C3
+para que dessa forma pudesse alterar entre os tipos de farol (Desligado, Neblina, Luz baixa e luz Alta),além disso,
+salvei o seu resultado utilizando eeprom_write_bytee para representar cada um dos tipos, utilizei comandos do GLCD para desenhar o símbolo de cada farol.
+
+Funcionalidade 4: Aviso de Temperatura de Bateria 
+	Para esse Aviso, eu apenas coloquei um if dentro da main para que quando a leitura da temperatura da bateria estivesse
+acima de 100 °C fosse desenhado um aviso na tela GLCD, para que assim o motorista possa tomar as providencias. 	
